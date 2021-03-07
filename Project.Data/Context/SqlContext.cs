@@ -20,6 +20,8 @@ namespace Project.Data.Context
 
             modelBuilder.ApplyConfiguration(new CompanyMap());
 
+            modelBuilder.Entity<Company>(entity => entity.HasIndex(c => c.Name).IsUnique());
+
             base.OnModelCreating(modelBuilder);
         }
 

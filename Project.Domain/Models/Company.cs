@@ -7,6 +7,5 @@ namespace Project.Domain.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public List<Account> Accounts { get; set; }
     }
 }

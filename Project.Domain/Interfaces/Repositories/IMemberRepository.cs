@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Interfaces.Repositories
 {
-    interface IMemberRepository : IBaseRepository<Member>
+    public interface IMemberRepository : IBaseRepository<Member>
     {
     }
 }

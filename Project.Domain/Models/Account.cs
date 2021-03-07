@@ -10,10 +10,7 @@ namespace Project.Domain.Models
         public int Balance { get; set; }
 
         #region Member
-
         public Guid MemberId { get; set; }
-        public Member Member { get; set; }
-
         #endregion
 
         #region Company

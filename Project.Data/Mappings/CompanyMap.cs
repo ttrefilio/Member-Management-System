@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Project.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Project.Data.Mappings
 {

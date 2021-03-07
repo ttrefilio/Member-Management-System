@@ -1,17 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Project.API.Configurations;
-using Project.Data.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Project.API
 {
@@ -26,12 +18,16 @@ namespace Project.API
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDbContext<SqlContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbMemberManagement")));
+        {   
+            services.AddControllers();            
 
-            services.AddCors();
+            EntityFrameworkSetup.AddEntityFrameworkSetup(services, Configuration);
 
-            services.AddControllers();
+            DependencyInjection.Register(services);
+
+            AutoMapperSetup.AddAutoMapperSetup(services);
+
+            CorsSetup.AddCorsSetup(services);
 
             SwaggerSetup.AddSwaggerSetup(services);
         }
@@ -44,12 +40,9 @@ namespace Project.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(options => options
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
-
             app.UseRouting();
+
+            CorsSetup.UseCorsSetup(app);
             
             app.UseEndpoints(endpoints =>
             {

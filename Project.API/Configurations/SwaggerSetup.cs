@@ -62,7 +62,6 @@ namespace Project.API.Configurations
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "MemberManagement");
-                c.RoutePrefix = string.Empty;
             });
         }
     }

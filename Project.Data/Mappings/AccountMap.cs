@@ -10,14 +10,6 @@ namespace Project.Data.Mappings
         {
             builder.Property(a => a.Status)
                 .HasConversion<int>();
-
-            builder.HasOne(a => a.Member)
-                .WithMany(m => m.Accounts)
-                .HasForeignKey(a => a.MemberId);
-
-            builder.HasOne(a => a.Company)
-                .WithMany(c => c.Accounts)
-                .HasForeignKey(a => a.CompanyId);
         }
     }
 }

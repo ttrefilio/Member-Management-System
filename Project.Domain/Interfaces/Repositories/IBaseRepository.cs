@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Project.Domain.Interfaces.Repositories
 {
@@ -10,6 +11,7 @@ namespace Project.Domain.Interfaces.Repositories
         void Update(TEntity obj);
         void Remove(TEntity obj);
         IQueryable<TEntity> GetAll();
-        TEntity GetById(Guid id);
+        TEntity GetById(Guid id);       
+
     }
 }
