@@ -3,7 +3,6 @@ using Project.Data.Context;
 using Project.Domain.Interfaces.Repositories;
 using Project.Domain.Models;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Project.Data.Repositories
 {

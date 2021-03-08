@@ -8,7 +8,6 @@ using Project.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Project.API.Controllers
 {
@@ -47,7 +46,7 @@ namespace Project.API.Controllers
 
         [HttpPost]
         [Route("Import")]
-        public IActionResult Import(List<ImportMemberCommand> commandList)
+        public IActionResult ImportMembersWithAccountsFromJson(List<ImportMemberCommand> commandList)
         {
             try
             {
@@ -106,20 +105,6 @@ namespace Project.API.Controllers
             {
                 return StatusCode(500, e.Message);
             }
-        }
-
-        [HttpGet]
-        [Route("Filter")]
-        public IActionResult Filter()
-        {
-            List<Member> members = memberRepository.GetAll().ToList();
-            foreach(var member in members)
-            {
-                member.Accounts = member.Accounts.Where(a => a.Balance >= 20 && a.Status == AccountStatus.INACTIVE).ToList();
-            }
-            members = members.Where(m => m.Accounts.Count > 0).ToList();
-
-            return Ok(mapper.Map<List<MemberDTO>>(members));
-        }    
+        }        
     }
 }

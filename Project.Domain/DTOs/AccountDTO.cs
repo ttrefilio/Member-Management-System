@@ -1,5 +1,4 @@
-﻿using Project.Domain.Enums;
-using System;
+﻿using System;
 
 namespace Project.Domain.DTOs
 {
