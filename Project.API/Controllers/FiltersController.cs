@@ -30,7 +30,7 @@ namespace Project.API.Controllers
             {
                 member.Accounts = member.Accounts.Where(a => a.Balance >= minBalance && a.Status == Enum.Parse<AccountStatus>(status.ToUpper())).ToList();
             }
-            members = members.Where(m => m.Accounts.Count > 0).ToList();
+            members = members.Where(m => m.Accounts.Any()).ToList();
 
             return Ok(mapper.Map<List<MemberDTO>>(members));
         }
